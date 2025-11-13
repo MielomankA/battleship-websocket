@@ -12,6 +12,13 @@ wss.on('connection', (socket) => {
     console.log('WS client connected');
     socket.send(JSON.stringify({ type: 'message', content: 'Hello from Node.js!' }));
 
+    socket.on('close', (code, reason) => {
+        const reasonText = reason.toString() || 'No reason';
+        const codeText = code.toString() || 'No code';
+
+        console.log(`WS client disconnected - reason: ${reasonText} | code: ${codeText}`);
+    });
+
     socket.on('message', (msg) => {
         console.log('WS message:', msg.toString());
     });
