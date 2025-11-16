@@ -12,9 +12,9 @@ socketServer(WS_PORT);
 httpServer.listen(HTTP_PORT);
 
 process.on('SIGINT', () => {
-    console.log("Connection termination...");
+    console.log("Server connection termination...");
     httpServer.close(() => {
-        console.log("HTTP server connection closed");
+        console.log("Server connection closed");
         process.exit(0);
     });
 });
