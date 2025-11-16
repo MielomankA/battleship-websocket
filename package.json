@@ -5,17 +5,25 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
-        "start": "node ./index.js",
-        "start:dev": "nodemon ./index.js",
+        "build": "tsc",
+        "start:prod": "npm run build && node dist/index.js",
+        "start:dev": "nodemon --watch src --ext ts,js,json --exec \"node --loader ts-node/esm src/index.ts\"",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Andrei Auchynnikau",
     "keywords": [],
     "license": "ISC",
     "devDependencies": {
-        "nodemon": "^2.0.16"
+        "@types/ws": "^8.18.1",
+        "nodemon": "^2.0.16",
+        "ts-node": "^10.9.2",
+        "ts-node-dev": "^2.0.0",
+        "typescript": "^5.9.3"
     },
     "dependencies": {
+        "cross-env": "^10.1.0",
+        "dotenv": "^17.2.3",
+        "tsx": "^4.20.6",
         "ws": "^8.8.0"
     }
 }
