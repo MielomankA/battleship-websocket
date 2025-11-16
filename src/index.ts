@@ -10,3 +10,11 @@ console.log(`WebSocket server starting on ws://localhost:${WS_PORT}`);
 socketServer(WS_PORT);
 
 httpServer.listen(HTTP_PORT);
+
+process.on('SIGINT', () => {
+    console.log("Connection termination...");
+    httpServer.close(() => {
+        console.log("HTTP server connection closed");
+        process.exit(0);
+    });
+});
