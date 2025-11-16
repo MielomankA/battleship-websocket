@@ -5,8 +5,9 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
-        "start": "node ./index.js",
-        "start:dev": "nodemon ./index.js",
+        "build": "tsc",
+        "start:prod": "npm run build && node dist/index.js",
+        "start:dev": "nodemon --watch src --ext ts,js,json --exec \"node --loader ts-node/esm src/index.ts\"",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Andrei Auchynnikau",
